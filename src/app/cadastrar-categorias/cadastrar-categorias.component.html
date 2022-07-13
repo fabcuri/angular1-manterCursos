@@ -1,0 +1,53 @@
+<h5>Cadastro de Categorias</h5>
+
+<p>Preencha os campos para incluir uma categoria.</p>
+
+<form [formGroup]="formCadastro" (ngSubmit)="onSubmit()">
+
+    <div *ngIf="mensagem" class="mb-3 alert alert-primary">
+        <strong>{{mensagem}}</strong>
+    </div>
+
+    <div class="row mb-3">
+
+        <div class="col-md-6">
+
+            <label>Tipo:</label>
+
+            <input type="text" class="form-control" formControlName="tipo" />
+
+            <div class="text-danger" *ngIf="form.tipo.touched && form.tipo.invalid">
+
+                <span *ngIf="form.nome.tipo.required">
+
+                    Porfavor, informe o tipo da categoria.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+    <div class="row mb-3">
+        <div class="col-md-12">
+            <input type="submit" [disabled]="!formCadastro.valid" class="btn btn-success" value="Adicionar" />
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+    <button class="btn btn-primary" [routerLink]="['/app.component']">
+        Voltar
+    </button>
+
+
+</form>

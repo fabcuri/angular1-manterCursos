@@ -1,0 +1,45 @@
+<h5>Consulta de Cursos</h5>
+<p>Listagem de cursos cadastrados</p>
+
+<!--a tabela vai ter cabecalho, corpo e rodapé-->
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <td>Descricao</td>
+      <td>DataInicio</td>
+      <td>DataTermino</td>
+   
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of cursos">
+      <td>{{ c.descricao }}</td>
+      <td>{{ c.dataInicio| date: 'dd/MM/yyyy'}} </td>
+      <td>{{ c.dataTermino| date: 'dd/MM/yyyy'}} </td>
+     
+
+
+      <td>
+        <button class="btn btn-primary" [routerLink]="['/editar-cursos', c.idCurso]">
+          Editar
+        </button>
+        &nbsp;
+        <button class="btn btn-danger" (click)="excluir(c.idCurso)">
+          Excluir
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="6">Total de registros :{{ cursos.length }}</td>
+    </tr>
+  </tfoot>
+</table>
+<br>
+<br>
+<button class="btn btn-primary" [routerLink]="['/app.component']">
+    Voltar
+  </button>

@@ -1,0 +1,110 @@
+<h5>Cadastro de Cursos</h5>
+
+<p>Preencha os campos para incluir um curso.</p>
+
+
+
+<form [formGroup]="formCadastro" (ngSubmit)="onSubmit()">
+
+    <div *ngIf="mensagem" class="mb-3 alert alert-primary">
+        <strong>{{mensagem}}</strong>
+    </div>
+
+    <div class="row mb-3">
+
+        <div class="col-md-6">
+
+            <label>Descricao do Curso:</label>
+
+            <input type="text" class="form-control" formControlName="descricao" />
+
+            <div class="text-danger" *ngIf="form.descricao.touched && form.descricao.invalid">
+
+                <span *ngIf="form.nome.descricao.required">
+
+                    Porfavor, informe a descrição do curso.
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <label>Data Inicio: </label>
+
+            <input type="date" class="form-control" formControlName="dataInicio" />
+
+            <div class="text-danger" *ngIf="form.dataInicio.touched && form.dataInicio.invalid">
+
+                <span *ngIf="form.dataInicio.errors.required">
+
+                    Porfavor, informe a data do inicio do curso.
+
+                </span>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+            <label>Data Termino: </label>
+
+            <input type="date" class="form-control" formControlName="dataTermino" />
+
+            <div class="text-danger" *ngIf="form.dataTermino.touched && form.dataTermino.invalid">
+
+                <span *ngIf="form.dataTermino.errors.required">
+
+                    Porfavor, informe a data do termino do curso.
+
+                </span>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+
+            <label>Nome: </label>
+
+            <select class="form-select" formControlName="idCategoria">
+                <option [selected]="true">Escolha a categoria</option>
+                <option value="1">Multiplataforma</option>
+                <option value="2">BD</option>
+                <option value="3">Metodologia</option>
+                <option value="4">Comportamento</option>
+                <option value="5">Comunicacao</option>
+            </select>
+
+
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+    <div class="row mb-3">
+
+        <div class="col-md-12">
+
+
+
+            <input type="submit" [disabled]="!formCadastro.valid" class="btn btn-success" value="Adicionar" />
+            <br>
+            <br>
+        </div>
+    </div>
+
+</form>
+<br>
+<br>
+<button class="btn btn-primary" [routerLink]="['/app.component']">
+    Voltar
+</button>

@@ -1,0 +1,40 @@
+<h5>Edição de Categorias</h5>
+<p>Utilize os campos para alterar os dados de uma categoria</p>
+
+<form [formGroup]="formEdicao" (ngSubmit)="onSubmit()">
+  <div *ngIf="mensagem" class="mb-3 alert alert-primary">
+    <strong>{{mensagem}}</strong>
+  </div>
+  <!--hidden ocultar, para nao permitir que edit é read-->
+  <!--campo oculto -->
+  <input type="hidden" formControlName="idCategoria" />
+
+  <div class="row mb-3">
+    <!--mb margem inferior -->
+    <div class="col-md-6">
+      <!-- 6 colunas-->
+      <label>Nome:</label>
+      <input type="text" class="form-control" formControlName="tipo" />
+      <div class="text-danger" *ngIf="form.tipo.touched && form.tipo.invalid">
+        <span *ngIf="form.tipo.errors.required">
+          Por favor insira o tipo da categoria.
+        </span>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <input type="submit" [disabled]="!formEdicao.valid" class="btn btn-success" value="Salvar Alterações" />
+    </div>
+  </div>
+</form>
+<br>
+<br>
+<button class="btn btn-primary" [routerLink]="['/app.component']">
+    Voltar
+  </button>
